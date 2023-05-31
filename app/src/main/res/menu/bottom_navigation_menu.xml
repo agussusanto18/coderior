@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_home"
+        android:title="Play Games"
+        android:icon="@drawable/bottomnav_play" />
+    <item
+        android:id="@+id/action_search"
+        android:title="Leader Board"
+        android:icon="@drawable/bottomnav_leaderboard" />
+    <item
+        android:id="@+id/action_profile"
+        android:title="Controls"
+        android:icon="@drawable/bottomnav_settings" />
+</menu>
