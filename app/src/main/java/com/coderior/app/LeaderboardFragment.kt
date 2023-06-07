@@ -1,10 +1,22 @@
 package com.coderior.app
 
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.coderior.app.adapters.GlobalRankingAdapter
+import com.coderior.app.adapters.HomeCardAdapter
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,44 +28,53 @@ private const val ARG_PARAM2 = "param2"
  * Use the [LeaderboardFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LeaderboardFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class LeaderboardFragment : Fragment(), View.OnClickListener {
+
+    lateinit var select1: TextView
+    lateinit var select2: TextView
+    lateinit var tab1: TextView
+    lateinit var tab2: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_leaderboard, container, false)
+        val view = inflater.inflate(R.layout.fragment_leaderboard, container, false)
+
+        childFragmentManager.beginTransaction().replace(R.id.leaderboardContainer, LeaderboardRankingFragment()).commit()
+
+        tab1 = view.findViewById(R.id.tab1)
+        tab2 = view.findViewById(R.id.tab2)
+        tab1.setOnClickListener(this)
+        tab2.setOnClickListener(this)
+        select1 = view.findViewById(R.id.select1)
+        select2 = view.findViewById(R.id.select2)
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LeaderboardFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LeaderboardFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    @SuppressLint("ResourceAsColor")
+    override fun onClick(view: View) {
+        if (view.id == R.id.tab1) {
+            select1.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.active))
+            select2.setBackgroundColor(Color.WHITE)
+
+            tab1.setTextColor(Color.WHITE)
+            tab2.setTextColor(ContextCompat.getColor(requireContext(), R.color.subTitle))
+
+            childFragmentManager.beginTransaction().replace(R.id.leaderboardContainer, LeaderboardRankingFragment()).commit()
+        } else if (view.id == R.id.tab2) {
+            select1.setBackgroundColor(Color.WHITE)
+            select2.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.active))
+
+            tab1.setTextColor(ContextCompat.getColor(requireContext(), R.color.subTitle))
+            tab2.setTextColor(Color.WHITE)
+
+            childFragmentManager.beginTransaction().replace(R.id.leaderboardContainer, LeaderboardRewardFragment()).commit()
+        }
     }
 }

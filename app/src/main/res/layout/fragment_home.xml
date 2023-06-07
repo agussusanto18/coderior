@@ -39,6 +39,7 @@
         android:layout_marginTop="180dp"
         android:layout_gravity="bottom"
         app:cardBackgroundColor="@color/white"
+        app:strokeWidth="0dp"
         android:paddingHorizontal="20dp"
         android:paddingTop="20dp">
         <LinearLayout

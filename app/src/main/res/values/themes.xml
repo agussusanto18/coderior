@@ -2,10 +2,13 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Coderior" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/active</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
-
-    <style name="Theme.Coderior" parent="Base.Theme.Coderior" />
+    
+    <style name="Theme.Coderior" parent="Base.Theme.Coderior">
+        <item name="colorPrimaryDark">@color/primary</item>
+    </style>
 
     <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
         <item name="cornerFamily">rounded</item>
