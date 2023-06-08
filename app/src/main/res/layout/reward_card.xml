@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginBottom="15dp"
+    app:strokeWidth="0dp"
+    app:cardElevation="3dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="5dp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/rewardImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:civ_border_color="#fff"
+            app:civ_border_width="3dp"
+            android:backgroundTint="@color/active"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/rewardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/title"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:text="-"/>
+            <TextView
+                android:id="@+id/rewardSubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/subTitle"
+                android:textStyle="bold"
+                android:textSize="12dp"
+                android:text="-"/>
+            <ProgressBar
+                android:id="@+id/rewardProgress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="8dp"
+                android:progressTint="@color/secondary"
+                android:progressBackgroundTint="@color/background1"
+                android:progress="0" />
+
+            <Button
+                android:id="@+id/claimBtn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Claim Reward"
+                android:background="@drawable/claim_reward_button"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
